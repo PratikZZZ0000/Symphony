@@ -20,9 +20,20 @@ async def on_message(message):
   introductions = ["hello","hi","hey","hey!","hi!","hello!"]
 
   responses = ["Hello there!","Hey, what's up?","How're you doing?","How are you?","Hi, what's the plan for today?"]
-
-  if message.content in introductions:
+  
+  if message.content.lower() in introductions:
     response = random.choice(responses)
+    await message.channel.send(response)
+
+  if message.content.startswith(">say"):
+    message.delete()
+    words = message.content.split(' ')
+    words.remove(">say")
+    
+    response = ""
+    for word in words:
+      response += f" {word}"
+
     await message.channel.send(response)
 
 keep_alive()
