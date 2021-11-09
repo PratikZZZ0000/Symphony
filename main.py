@@ -26,7 +26,7 @@ async def on_message(message):
     await message.channel.send(response)
 
   if message.content.startswith(">say"):
-    message.delete()
+    await message.delete()
     words = message.content.split(' ')
     words.remove(">say")
     
