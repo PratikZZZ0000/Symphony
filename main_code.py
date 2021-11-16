@@ -44,6 +44,10 @@ async def say(ctx, *args):
     response += ' ' + word
 
   await ctx.channel.send(response)
+  
+@client.command()
+async def calculate(ctx, *args):
+  await ctx.channel.send(eval(args)
 
 keep_alive()
 client.run(Token)
